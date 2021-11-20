@@ -5,6 +5,7 @@ using UnityEngine;
 public class Card : MonoBehaviour
 {
     // Start is called before the first frame update
+    Animator animator;
     public enum suit_t
     {
         hearts,
@@ -59,19 +60,20 @@ public class Card : MonoBehaviour
     }
 
     public Sprite[] spriteArray;
-    void Start()
+    private void Awake()
     {
+        animator = GetComponent<Animator>();
+        animator.SetFloat("rank", 10f);
+        animator.SetFloat("Suit", 0f);
+        Debug.Log(animator.GetFloat("Suit"));
+        Debug.Log(animator.GetFloat("rank"));
+
+
+
 
     }
-
     // Update is called once per frame
 
-
-    
-    void Update()
-    {
-        
-    }
 
 
 
