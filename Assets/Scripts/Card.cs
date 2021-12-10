@@ -27,7 +27,7 @@ public class Card : MonoBehaviour
         ten = 10,
         jack = 11,
         queen = 12,
-        King = 13
+        king = 13
     }
 
 
@@ -82,16 +82,15 @@ public class Card : MonoBehaviour
         _rank = (rank_t)r;
     }
 
-    public Sprite[] spriteArray;
     // Update is called once per frame
 
     private void Start()
     {
-        _suit = (suit_t)3;
-        _rank = (rank_t)1;
+        // Debug.Log("Card Suit: " + (int)_suit + " Card Rank: " + _rank);
         animator = GetComponent<Animator>();
-        animator.SetFloat("Card", (int)_rank);
-        animator.SetFloat("Suit", 3);
+        // animator.SetBool("isFlip", true);
+        animator.SetInteger("Suit", (int)_suit);
+        animator.SetFloat("Card", (float)_rank);
     }
 
 

@@ -2,9 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AI : MonoBehaviour
+public class AI : Player
 {
-    // Start is called before the first frame update
+
+    
+    public AI() { 
+    
+    }
+
     void Start()
     {
         

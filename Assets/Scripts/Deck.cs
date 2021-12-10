@@ -8,10 +8,10 @@ public class Deck : MonoBehaviour
     private Card[] deck = new Card[52];
     public Transform card;
     public Human player1;
-    private int offset = 1;
+    // private int offset = 1;
     internal int deckTop = 0;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         initDeck();
         shuffleDeck();
@@ -31,10 +31,21 @@ public class Deck : MonoBehaviour
 
 
     //Draw Card Function
-    void OnMouseDown()
+    public Card draw(float xOffset, float yOffset)
     {
         
         Transform newCard;
+        newCard = Instantiate(card, new Vector3(-2*(xOffset), -15 * (yOffset), 0), Quaternion.identity);
+        Card cCard = newCard.GetComponent<Card>();
+        // Debug.Log(deck[deckTop]);
+        cCard.suit = deck[deckTop].suit;
+        cCard.rank = deck[deckTop].rank;
+        cCard.GetComponent<Animator>().SetBool("isFlip", true);
+
+        deckTop++;
+        return cCard;
+
+        /*
         if (player1.handSize == 1)
         {
             newCard = Instantiate(card, new Vector3(-2, -5, 0), Quaternion.identity);
@@ -65,7 +76,7 @@ public class Deck : MonoBehaviour
             deckTop++;
             offset--;
         }
-
+        */
     }
 
 
