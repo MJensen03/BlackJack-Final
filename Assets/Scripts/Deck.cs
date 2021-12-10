@@ -5,7 +5,7 @@ using UnityEngine;
 public class Deck : MonoBehaviour
 {
 
-    internal Card[] deck = new Card[52];
+    private Card[] deck = new Card[52];
     public Transform card;
     public Human player1;
     private int offset = 1;
@@ -39,6 +39,7 @@ public class Deck : MonoBehaviour
         {
             newCard = Instantiate(card, new Vector3(-2, -5, 0), Quaternion.identity);
             Card cCard = newCard.GetComponent<Card>();
+            Debug.Log(deck[deckTop]);
             cCard.suit = deck[deckTop].suit;
             cCard.rank = deck[deckTop].rank;
             player1.handSize++;
@@ -71,11 +72,11 @@ public class Deck : MonoBehaviour
     private void initDeck()
     {
         int i = 0; ;
-        for(int r = 0; r < 4; r++)
+        for(int s = 0; s < 4; s++)
         {
-            for(int s = 1; s < 14; s++)
+            for(int r = 1; r < 14; r++)
             {
-                deck[i] = new Card(r, s);
+                deck[i] = new Card(s, r);
                 i++;
             }
         }

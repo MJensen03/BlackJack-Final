@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Card : MonoBehaviour
 {
-    // Start is called before the first frame update
     Animator animator;
     public enum suit_t
     {
@@ -32,8 +31,33 @@ public class Card : MonoBehaviour
     }
 
 
-    public suit_t suit;
-    public rank_t rank;
+    private suit_t _suit;
+    private rank_t _rank;
+
+    public rank_t rank
+    {
+        set
+        {
+            _rank = value;
+        }
+        get
+        {
+            return _rank;
+        }
+    }
+
+    public suit_t suit
+    {
+        set
+        {
+            _suit = value;
+        }
+        get
+        {
+            return _suit;
+        }
+    }
+
     private string toSring(suit_t s)
     {
         switch(s)
@@ -52,35 +76,23 @@ public class Card : MonoBehaviour
     }
 
     Card() { }
-    public Card(int s, int r)
+    public Card(int suite, int r)
     {
-        suit = (suit_t)s;
-        rank = (rank_t)r;
-        // Debug.Log((int)suit + " " + rank);
+        _suit = (suit_t)suite;
+        _rank = (rank_t)r;
     }
 
     public Sprite[] spriteArray;
-    private void Awake()
-    {
-        animator = GetComponent<Animator>();
-        animator.SetFloat("rank", 10f);
-        animator.SetFloat("Suit", 0f);
-        Debug.Log(animator.GetFloat("Suit"));
-        Debug.Log(animator.GetFloat("rank"));
-
-
-
-
-    }
     // Update is called once per frame
 
-
-
-
-    public void updateSprite(int cardVal, int suite)
+    private void Start()
     {
-
-
-
+        _suit = (suit_t)3;
+        _rank = (rank_t)1;
+        animator = GetComponent<Animator>();
+        animator.SetFloat("Card", (int)_rank);
+        animator.SetFloat("Suit", 3);
     }
+
+
 }

@@ -1,0 +1,15 @@
+#Script that I made with help of the internet to rename all of my animations after copying them
+#I was proud of it so I included it here for you to look at.  
+#If you see this, Hi Professor Jenkins! :)
+import os
+suit = ["Club", "Diamond", "Heart", "Spade"]
+folder = "C:\\Users\\ultra\BlackJack Final\Assets\\Animations\\Card anims\\Individual Card Anims"
+for count, filename in enumerate(os.listdir(folder)):
+    suitIndex = count%4
+    card = count%13 + 1
+    dst = f"{str(suit[suitIndex])} - {str(card)}.anim" #Renamed name
+
+    src = f"{folder}/{filename}" #Need folder name since outside of path
+    dst = f"{folder}/{dst}" #New File name
+
+    os.rename(src,dst)
