@@ -5,20 +5,15 @@ using UnityEngine;
 public class Deck : MonoBehaviour
 {
 
-    internal Card[] deck = new Card[52];
+    private Card[] deck = new Card[52];
     public Transform card;
-    public Human player1;
-    private int offset = 1;
+    // private int offset = 1;
     internal int deckTop = 0;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         initDeck();
         shuffleDeck();
-        for(int i = 0; i < 52; i++)
-        {
-            Debug.Log(deck[i].rank + " " + deck[i].suit);
-        }
     }
 
 
@@ -28,54 +23,31 @@ public class Deck : MonoBehaviour
         
     }
 
-
-
+    
     //Draw Card Function
-    void OnMouseDown()
+    
+    public Card draw(float xOffset, float yOffset)
     {
-        
         Transform newCard;
-        if (player1.handSize == 1)
-        {
-            newCard = Instantiate(card, new Vector3(-2, -5, 0), Quaternion.identity);
-            Card cCard = newCard.GetComponent<Card>();
-            cCard.suit = deck[deckTop].suit;
-            cCard.rank = deck[deckTop].rank;
-            player1.handSize++;
-            deckTop++;
+        newCard = Instantiate(card, new Vector3(-2 * (xOffset), -15 * (yOffset), 0), Quaternion.identity);
+        Card cCard = newCard.GetComponent<Card>();
+        cCard.suit = deck[deckTop].suit;
+        cCard.rank = deck[deckTop].rank;
+        cCard.GetComponent<Animator>().SetBool("isFlip", true);
 
-        }
-        else if(player1.handSize == 2)
-        {
-            newCard = Instantiate(card, new Vector3(2, -5, 0), Quaternion.identity);
-            Card cCard = newCard.GetComponent<Card>();
-            cCard.suit = deck[deckTop].suit;
-            cCard.rank = deck[deckTop].rank;
-            player1.handSize++;
-            deckTop++;
-        }
-        else if(player1.handSize > 2 && player1.handSize < 6)
-        {
-            newCard = Instantiate(card, new Vector3(-4 * offset, -1, 0), Quaternion.identity);
-            Card cCard = newCard.GetComponent<Card>();
-            cCard.suit = deck[deckTop].suit;
-            cCard.rank = deck[deckTop].rank;
-            player1.handSize++;
-            deckTop++;
-            offset--;
-        }
+        deckTop++;
+        return cCard;
 
     }
-
 
     private void initDeck()
     {
         int i = 0; ;
-        for(int r = 0; r < 4; r++)
+        for(int s = 0; s < 4; s++)
         {
-            for(int s = 1; s < 14; s++)
+            for(int r = 1; r < 14; r++)
             {
-                deck[i] = new Card(r, s);
+                deck[i] = new Card(s, r);
                 i++;
             }
         }
