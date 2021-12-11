@@ -28,7 +28,7 @@ public class Player : MonoBehaviour
         _handTop++;
     }
 
-    public int calculateHand()
+    virtual public int calculateHand()
     {
         int handVal = 0;
         for(int i = 0; i < _handTop; i++)

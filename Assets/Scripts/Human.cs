@@ -6,7 +6,6 @@ public class Human : Player
 {
     // Start is called before the first frame update
 
-    public int handSize = 1;
     void Start()
     {
     }

@@ -7,7 +7,6 @@ public class Deck : MonoBehaviour
 
     private Card[] deck = new Card[52];
     public Transform card;
-    public Human player1;
     // private int offset = 1;
     internal int deckTop = 0;
     // Start is called before the first frame update
@@ -15,10 +14,12 @@ public class Deck : MonoBehaviour
     {
         initDeck();
         shuffleDeck();
+        /*
         for(int i = 0; i < 52; i++)
         {
             Debug.Log(deck[i].rank + " " + deck[i].suit);
         }
+        */
     }
 
 
@@ -28,14 +29,13 @@ public class Deck : MonoBehaviour
         
     }
 
-
-
+    
     //Draw Card Function
+    
     public Card draw(float xOffset, float yOffset)
     {
-        
         Transform newCard;
-        newCard = Instantiate(card, new Vector3(-2*(xOffset), -15 * (yOffset), 0), Quaternion.identity);
+        newCard = Instantiate(card, new Vector3(-2 * (xOffset), -15 * (yOffset), 0), Quaternion.identity);
         Card cCard = newCard.GetComponent<Card>();
         // Debug.Log(deck[deckTop]);
         cCard.suit = deck[deckTop].suit;
@@ -75,10 +75,9 @@ public class Deck : MonoBehaviour
             player1.handSize++;
             deckTop++;
             offset--;
-        }
-        */
+        }*/
+        
     }
-
 
     private void initDeck()
     {
