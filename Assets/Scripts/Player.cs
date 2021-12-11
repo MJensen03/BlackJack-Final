@@ -38,6 +38,8 @@ public class Player : MonoBehaviour
             if (hand[i].rank == Card.rank_t.ace)
             {
                 handVal += 11;
+                if (handVal > 21)
+                    handVal -= 10;
                 continue;
             }
                 

@@ -28,7 +28,6 @@ public class GameManager : MonoBehaviour
     public Text playerScore;
     public Text aiScore;
     private bool aiTurn = false;
-    private bool isEndGame = false;
     void Start()
     {
         for (int i = 0; i < 2; i++)
@@ -94,7 +93,7 @@ public class GameManager : MonoBehaviour
     {
         if (aiTurn)
         {
-            isEndGame = true;
+            // isEndGame = true;
             return;
         }
         offset = 2;

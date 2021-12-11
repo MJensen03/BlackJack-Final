@@ -14,12 +14,6 @@ public class Deck : MonoBehaviour
     {
         initDeck();
         shuffleDeck();
-        /*
-        for(int i = 0; i < 52; i++)
-        {
-            Debug.Log(deck[i].rank + " " + deck[i].suit);
-        }
-        */
     }
 
 
@@ -37,7 +31,6 @@ public class Deck : MonoBehaviour
         Transform newCard;
         newCard = Instantiate(card, new Vector3(-2 * (xOffset), -15 * (yOffset), 0), Quaternion.identity);
         Card cCard = newCard.GetComponent<Card>();
-        // Debug.Log(deck[deckTop]);
         cCard.suit = deck[deckTop].suit;
         cCard.rank = deck[deckTop].rank;
         cCard.GetComponent<Animator>().SetBool("isFlip", true);
@@ -45,38 +38,6 @@ public class Deck : MonoBehaviour
         deckTop++;
         return cCard;
 
-        /*
-        if (player1.handSize == 1)
-        {
-            newCard = Instantiate(card, new Vector3(-2, -5, 0), Quaternion.identity);
-            Card cCard = newCard.GetComponent<Card>();
-            Debug.Log(deck[deckTop]);
-            cCard.suit = deck[deckTop].suit;
-            cCard.rank = deck[deckTop].rank;
-            player1.handSize++;
-            deckTop++;
-
-        }
-        else if(player1.handSize == 2)
-        {
-            newCard = Instantiate(card, new Vector3(2, -5, 0), Quaternion.identity);
-            Card cCard = newCard.GetComponent<Card>();
-            cCard.suit = deck[deckTop].suit;
-            cCard.rank = deck[deckTop].rank;
-            player1.handSize++;
-            deckTop++;
-        }
-        else if(player1.handSize > 2 && player1.handSize < 6)
-        {
-            newCard = Instantiate(card, new Vector3(-4 * offset, -1, 0), Quaternion.identity);
-            Card cCard = newCard.GetComponent<Card>();
-            cCard.suit = deck[deckTop].suit;
-            cCard.rank = deck[deckTop].rank;
-            player1.handSize++;
-            deckTop++;
-            offset--;
-        }*/
-        
     }
 
     private void initDeck()
